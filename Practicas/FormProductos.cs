@@ -63,7 +63,7 @@ namespace Practicas
             _productos.AgregarProducto(); // agregamos metodo para agregar
             listaProductosBindingSource.MoveLast();
 
-            DeshabilitarHabilitarBotones(false); // agregamos metodo para deshabilitar y habilitar botones
+            DeshabilitarHabilitarBotones(false); // agregamos metodo para deshabilitar y habilitar botonesss
         }
 
         private void DeshabilitarHabilitarBotones(bool valor)
