@@ -40,6 +40,7 @@ namespace Practicas
 
         }
 
+
         private void listaProductosBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             listaProductosBindingSource.EndEdit(); //termina de editar para guardar
