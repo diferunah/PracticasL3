@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,42 +10,21 @@ namespace BL.Practicas
 {
     public class ProductoBL // manipular Producto
     {
+        Contexto _contexto; // declaramos la variable contexto
         public BindingList<Producto> ListaProductos { get; set; } // Permite crear propiedad de lista de producto y hacer un Enlace
 
         public ProductoBL()
         {
+            _contexto = new Contexto(); //creamos una instancia el constructor 
             ListaProductos = new BindingList<Producto>(); // Inicializamos nuestra lista
-
-            var producto1 = new Producto(); // llenamos de productos nuestra lista
-            producto1.Id = 1;
-            producto1.Descripcion = "Iphone X";
-            producto1.Precio = 25000;
-            producto1.Existencia = 15;
-            producto1.Activo = true;
-
-            ListaProductos.Add(producto1); // Agrega a nuestra lista ListaProductos
-
-            var producto2 = new Producto(); // llenamos de productos nuestra lista
-            producto2.Id = 2;
-            producto2.Descripcion = "Samsung S20";
-            producto2.Precio = 20000;
-            producto2.Existencia = 18;
-            producto2.Activo = true;
-
-            ListaProductos.Add(producto2); // Agrega a nuestra lista ListaProductos
-
-            var producto3 = new Producto(); // llenamos de productos nuestra lista
-            producto3.Id = 3;
-            producto3.Descripcion = "LG V60";
-            producto3.Precio = 18000;
-            producto3.Existencia = 12;
-            producto3.Activo = true;
-
-            ListaProductos.Add(producto3); // Agrega a nuestra lista ListaProductos
+                
         }
 
         public BindingList<Producto> ObtenerProductos() // Funcion para el retorno de productos
         {
+            _contexto.Productos.Load(); //carga los productos de DbSet<Producto> que creamos en Contexto 
+            ListaProductos = _contexto.Productos.Local.ToBindingList(); //transforma todos los datos de producto a bindinglist
+
             return ListaProductos;
         }
 
