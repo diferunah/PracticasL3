@@ -12,7 +12,7 @@ namespace BL.Practicas
     {
         public Contexto(): base("VideoJuegos") //en base, lo que esta en parentesis nombramos nuestra base de datos
         {
-
+            
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
