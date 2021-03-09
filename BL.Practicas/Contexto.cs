@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL.Practicas
 {
-    class Contexto: DbContext
+    public class Contexto: DbContext
     {
         public Contexto(): base("VideoJuegos") //en base, lo que esta en parentesis nombramos nuestra base de datos
         {

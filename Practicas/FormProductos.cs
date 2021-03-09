@@ -15,14 +15,21 @@ namespace Practicas
     public partial class FormProductos : Form
     {
         ProductoBL _productos; // variable para usar en el constructor del formulario
+        CategoriasBL _categorias;
+        TiposBL _tiposBL;
 
         public FormProductos()
         {
             InitializeComponent();
 
             _productos = new ProductoBL();
-
             listaProductosBindingSource.DataSource = _productos.ObtenerProductos(); // Llamanos nuestra lista de productos de BL para visualizarse en el FormProductos
+
+            _categorias = new CategoriasBL();
+            listaCategoriasBindingSource.DataSource = _categorias.ObtenerCategorias();
+
+            _tiposBL = new TiposBL();
+            listaTiposBindingSource.DataSource = _tiposBL.ObtenerTipos();
            
         }
 
