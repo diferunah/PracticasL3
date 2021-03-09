@@ -97,6 +97,11 @@ namespace BL.Practicas
         public String Descripcion { get; set; }
         public double Precio { get; set; }
         public int Existencia { get; set; }
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
+        public int Tipoid { get; set; }
+        public Tipo Tipo { get; set; }
+        public byte[] foto { get; set; }
         public bool Activo { get; set; }
     }
 

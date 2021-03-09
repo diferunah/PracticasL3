@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,15 @@ namespace Practicas
         {
             listaProductosBindingSource.EndEdit(); //termina de editar para guardar
             var producto = (Producto)listaProductosBindingSource.Current; // muestra el producto actual que proviene de producto
+
+            if (fotoPictureBox.Image != null)
+            {
+                producto.foto = Program.imageToByteArray(fotoPictureBox.Image);
+            }
+            else
+            {
+                producto.foto = null;
+            }
 
             var resultado = _productos.GuardarProducto(producto);
 
@@ -116,6 +126,40 @@ namespace Practicas
         {
             DeshabilitarHabilitarBotones(true); //para cancelar una accion que no se habilito pero no se realizo
             Eliminar(0); //elimina el valor creado del id
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var producto = (Producto)listaProductosBindingSource.Current;
+
+            if(producto != null)
+            {
+                openFileDialog1.ShowDialog();
+                var archivo = openFileDialog1.FileName;
+
+                if (archivo != "")
+                {
+                    var fileInfo = new FileInfo(archivo); //Obtiene informacion del archivo (ruta)
+                    var filesStream = fileInfo.OpenRead(); //carga el archivo por partes (bytes)
+
+                    fotoPictureBox.Image = Image.FromStream(filesStream); //Lo asigna al PictureBox
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cree un producto antes de asignar una imagen");
+            }
+         
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fotoPictureBox.Image = null;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
