@@ -25,5 +25,7 @@ namespace BL.Practicas
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Tipo> Tipos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Factura> Facturas { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

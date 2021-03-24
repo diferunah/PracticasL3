@@ -168,5 +168,15 @@ namespace Practicas
         {
 
         }
+
+        private void fotoPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void categoriaIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

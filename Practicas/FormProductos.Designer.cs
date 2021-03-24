@@ -338,6 +338,7 @@
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fotoPictureBox.TabIndex = 12;
             this.fotoPictureBox.TabStop = false;
+            this.fotoPictureBox.Click += new System.EventHandler(this.fotoPictureBox_Click);
             // 
             // button1
             // 
@@ -379,6 +380,7 @@
             this.categoriaIdComboBox.Size = new System.Drawing.Size(176, 21);
             this.categoriaIdComboBox.TabIndex = 15;
             this.categoriaIdComboBox.ValueMember = "Id";
+            this.categoriaIdComboBox.SelectedIndexChanged += new System.EventHandler(this.categoriaIdComboBox_SelectedIndexChanged);
             // 
             // listaTiposBindingSource
             // 

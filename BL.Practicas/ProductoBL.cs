@@ -69,6 +69,14 @@ namespace BL.Practicas
             var resultado = new Resultado(); 
             resultado.Exitoso = true; // si sale bien
 
+            if (producto == null)
+            {
+                resultado.Mensaje = "Agregue producto válido";
+                resultado.Exitoso = false;
+
+                return resultado;
+            }
+
             if (string.IsNullOrEmpty(producto.Descripcion) == true) // si no, entra cambia el valor, y retorna con resultado
             {
                 resultado.Mensaje = "Ingrese una descripción";
