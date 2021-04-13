@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace Practicas
 {
-    public partial class FormReporteProductos : Form
+    public partial class FormReporteFacturas : Form
     {
-        public FormReporteProductos()
+        public FormReporteFacturas()
         {
             InitializeComponent();
 
-            var _productoBL = new ProductoBL();
+            var _facturasBL = new FacturaBL();
             var bindingSource = new BindingSource();
-            bindingSource.DataSource = _productoBL.ObtenerProductos();
+            bindingSource.DataSource = _facturasBL.ObtenerFacturas();
 
-            var reporte = new ReporteProductos();
+            var reporte = new ReporteFacturas();
             reporte.SetDataSource(bindingSource);
 
             crystalReportViewer1.ReportSource = reporte;
