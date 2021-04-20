@@ -20,12 +20,21 @@ namespace BL.Practicas
                 
         }
 
-        public BindingList<Producto> ObtenerProductos() // Funcion para el retorno de productos
+        public IEnumerable<Producto> ObtenerProductos() // Funcion para el retorno de productos
         {
             _contexto.Productos.Load(); //carga los productos de DbSet<Producto> que creamos en Contexto 
             ListaProductos = _contexto.Productos.Local.ToBindingList(); //transforma todos los datos de producto a bindinglist
 
-            return ListaProductos;
+            return ListaProductos.OrderBy(producto => producto.Descripcion);
+        }
+
+        public IEnumerable<Producto> ObtenerProductos(string buscar) // Funcion para el retorno de productos
+        {
+            var descripcion = buscar.ToLower().Trim();
+
+            var resultado = _contexto.Productos.Where(r => r.Descripcion.ToLower().Contains(descripcion)).ToList();
+
+            return resultado;
         }
 
         public Resultado GuardarProducto(Producto producto)

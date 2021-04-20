@@ -49,16 +49,44 @@ namespace Practicas
             button1.Text = "Verificando...";
             Application.DoEvents();
 
-            var resultado = _seguridad.Autorizar(usuario, contrasena);
+            var usuarioDB = _seguridad.Autorizar(usuario, contrasena);
 
-            if (resultado == true)
+            if (usuarioDB != null)
             {
+                Utils.NombreUsuario = usuarioDB.Nombre; // captura el usuario registrado en nuestra base de datos
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Usuario o contraseña no válido");
             }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (textBox1.Text != "") //indica que no debe estar vacio para pasar al siguiente textbox
+                {
+                    textBox2.Focus(); //ubica el puntero en el siguiente textbox
+                }
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (textBox2.Text != "")
+                {
+                    button1_Click(null, null); //continua con el boton de aceptar
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Practicas
         {
             var formLogin = new FormLogin();
             formLogin.ShowDialog();
+
+            toolStripStatusLabel1.Text = "Usuario: " + Utils.NombreUsuario; //Captura la confuguacion del menu
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
